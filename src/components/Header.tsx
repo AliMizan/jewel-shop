@@ -12,7 +12,7 @@ const Header = () => {
      <div className="flex justify-between items-center py-4">
         <Link
           to="/"
-          className="font-playfair text-[#E3AD26] text-2xl md:text-3xl font-bold text-primary"
+          className="font-playfair text-[#E3AD26] text-2xl md:text-3xl font-bold "
         >
           Suva jewels
         </Link>

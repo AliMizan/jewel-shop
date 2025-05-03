@@ -11,7 +11,7 @@ import UsernameMenu from "./UserName";
 //import UsernameMenu from "./UsernameMenu";
 
 const MainNav = () => {
- const { loginWithRedirect, isAuthenticated ,user} = useAuth0();
+ const { loginWithRedirect, isAuthenticated} = useAuth0();
 
   return (
     // <span className="flex space-x-2 items-center">
