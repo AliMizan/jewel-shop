@@ -1,12 +1,12 @@
 import { Link, useParams } from "react-router-dom"
 import { useGetProduct } from "../api/ProductApi"
-import { ShoppingCart, Star } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { Separator } from "../components/ui/separator";
-import { Input } from "../components/ui/input";
+
 import { Button } from "../components/ui/button";
 import { useState } from "react";
-import { Product, ProductItem } from "../types";
-import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "../components/ui/sheet";
+
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../components/ui/sheet";
 import { Card } from "../components/ui/card";
 import CartItem from "../components/CartItem";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -33,41 +33,41 @@ const AddToCart = useCartStore((state) => state.addToCart);
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
-  const addToCart = (Product:Product) => {
-    setCartItems((prevCartItems) => {
-      const existingCartItem = prevCartItems.find(
-        (cartItem) => cartItem._id === productId
-      );
+  // const addToCart = (Product:Product) => {
+  //   setCartItems((prevCartItems) => {
+  //     const existingCartItem = prevCartItems.find(
+  //       (cartItem) => cartItem._id === productId
+  //     );
 
-      let updatedCartItems;
+  //     let updatedCartItems;
 
-      if (existingCartItem) {
-        updatedCartItems = prevCartItems.map((cartItem) =>
-          cartItem._id === Product._id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        );
-      } else {
-        updatedCartItems = [
-          ...prevCartItems,
-          {
-            _id: Product._id,
-            name: Product.name,
-            price: Product.productPrice,
-            quantity: 1,
-            image:Product.imageUrl
-          },
-        ];
-      }
+  //     if (existingCartItem) {
+  //       updatedCartItems = prevCartItems.map((cartItem) =>
+  //         cartItem._id === Product._id
+  //           ? { ...cartItem, quantity: cartItem.quantity + 1 }
+  //           : cartItem
+  //       );
+  //     } else {
+  //       updatedCartItems = [
+  //         ...prevCartItems,
+  //         {
+  //           _id: Product._id,
+  //           name: Product.name,
+  //           price: Product.productPrice,
+  //           quantity: 1,
+  //           image:Product.imageUrl
+  //         },
+  //       ];
+  //     }
 
-      sessionStorage.setItem(
-        `cartItems-${user?.name}`,
-        JSON.stringify(updatedCartItems)
-      );
+  //     sessionStorage.setItem(
+  //       `cartItems-${user?.name}`,
+  //       JSON.stringify(updatedCartItems)
+  //     );
 
-      return updatedCartItems;
-    });
-  };
+  //     return updatedCartItems;
+  //   });
+  // };
 
   const removeFromCart = (cartItem: CartItem) => {
     setCartItems((prevCartItems) => {

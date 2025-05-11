@@ -4,7 +4,7 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -29,7 +29,7 @@ function ProductFilters({ currentCategory }: ProductFiltersProps) {
   
   
     const [selectedCategory, setSelectedCategory] = useState(currentCategory || "All Products");
-    const [selectedPriceRange, setSelectedPriceRange] = useState<{ min: number; max: number } | null>(null);
+    const [selectedPriceRange] = useState<{ min: number; max: number } | null>(null);
     const [minPrice, setMinPrice] = useState("");
     const [maxPrice, setMaxPrice] = useState("");
 

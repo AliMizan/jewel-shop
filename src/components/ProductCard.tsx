@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Product } from "../types";
-import { Button } from "./ui/button";
+
 import { Star } from "lucide-react";
 
 

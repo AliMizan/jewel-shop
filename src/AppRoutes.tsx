@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router"
+import {  Route, Routes } from "react-router"
 import Layout from "./layouts/layout"
 import HeroSection from "./components/hero-section"
 import CategoriesSection from "./components/categories-section"

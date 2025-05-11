@@ -1,18 +1,16 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import CartItem from "../components/CartItem";
-import { useEffect, useState } from "react";
-import { Minus, Plus, Trash, X } from "lucide-react";
-import { Link } from "react-router-dom";
+
+import { Minus, Plus, Trash } from "lucide-react";
+
 import { useCartStore } from "../stores/useCartStore";
 
 
-type CartItem = {
-  _id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  image:string
-};
+// type CartItem = {
+//   _id: string;
+//   name: string;
+//   price: number;
+//   quantity: number;
+//   image:string
+// };
 
 
 export default function Cart() {

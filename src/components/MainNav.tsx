@@ -9,23 +9,15 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { useAuth0 } from "@auth0/auth0-react";
 import UsernameMenu from "./UserName";
 import { ShoppingCart } from "lucide-react";
-import { useEffect, useState } from "react";
-import { CartItem } from "../pages/DetailPage";
+
 import { useCartStore } from "../stores/useCartStore";
 //import UsernameMenu from "./UsernameMenu";
 
 const MainNav = () => {
- const { loginWithRedirect, isAuthenticated,user} = useAuth0();
+ const { loginWithRedirect, isAuthenticated} = useAuth0();
 
  
-const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  useEffect(() => {
-    const storedCart = sessionStorage.getItem(`cartItems-${user?.name}`);
-    if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
-    }
-  }, []);
 
  const cart = useCartStore((state) => state.cart);
 

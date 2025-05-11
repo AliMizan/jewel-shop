@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useGetAllProducts } from "../api/MyProductApi"
+
 import ProductFilters from "../components/product-filter"
 import ProductCard from "../components/ProductCard"
 import { Separator } from "../components/ui/separator"
