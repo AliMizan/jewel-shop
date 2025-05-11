@@ -8,22 +8,22 @@ const categories = [
     {
         name: "Necklaces",
         image: necklace,
-        link: "/products/necklaces"
+        link: "/products/Necklace"
     },
     {
         name: "Earrings",
         image: ear,
-        link: "/products/earrings"
+        link: "/products/Earring"
     },
     {
         name: "Bracelets",
         image: bracelet,
-        link: "/products/bracelets"
+        link: "/products/Bracelet"
     },
     {
         name: "Rings",
         image: ring,
-        link: "/products/rings"
+        link: "/products/Ring"
     }
 ];
 

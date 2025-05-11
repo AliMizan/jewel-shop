@@ -8,10 +8,26 @@ import { Link } from "react-router";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { useAuth0 } from "@auth0/auth0-react";
 import UsernameMenu from "./UserName";
+import { ShoppingCart } from "lucide-react";
+import { useEffect, useState } from "react";
+import { CartItem } from "../pages/DetailPage";
+import { useCartStore } from "../stores/useCartStore";
 //import UsernameMenu from "./UsernameMenu";
 
 const MainNav = () => {
- const { loginWithRedirect, isAuthenticated} = useAuth0();
+ const { loginWithRedirect, isAuthenticated,user} = useAuth0();
+
+ 
+const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    const storedCart = sessionStorage.getItem(`cartItems-${user?.name}`);
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart));
+    }
+  }, []);
+
+ const cart = useCartStore((state) => state.cart);
 
   return (
     // <span className="flex space-x-2 items-center">
@@ -51,18 +67,26 @@ const MainNav = () => {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-48 border-0 bg-amber-50 " >
+                  <Link to="/products/Necklace">
                   <DropdownMenuItem className="block px-4 py-2 hover:bg-accent">
                     Necklaces
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="block px-4 py-2 hover:bg-accent">
-                    Earings
-                  </DropdownMenuItem>
+                  </Link>
+                  <Link to="/products/Bracelet">
                   <DropdownMenuItem className="block px-4 py-2 hover:bg-accent">
                     Bracelets
                   </DropdownMenuItem>
+                  </Link>
+                  <Link to="/products/Ring">
                   <DropdownMenuItem className="block px-4 py-2 hover:bg-accent">
                     Rings
                   </DropdownMenuItem>
+                  </Link>
+                  <Link to="/products/All Products">
+                  <DropdownMenuItem className="block px-4 py-2 hover:bg-accent">
+                    All Products
+                  </DropdownMenuItem>
+                  </Link>
 
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -86,6 +110,22 @@ const MainNav = () => {
               className="hover:text-[#E3AD26] transition-colors"
             >
               Contact
+            </Link>
+            <Link 
+              to="/cart" 
+              className="hover:text-[#E3AD26] transition-colors"
+            >
+              <div className="relative">
+                <ShoppingCart  />
+
+      
+        {  (
+        <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+          {cart.length}
+        </span>
+      )}
+      
+    </div>
             </Link>
 
             
