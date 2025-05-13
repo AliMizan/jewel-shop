@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Separator } from "./ui/separator";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { cn } from "../lib/utils";
+
 import { Link } from "react-router-dom";
 
 
@@ -11,12 +8,7 @@ import { Link } from "react-router-dom";
 
 
 const CATEGORIES = ["All Products", "Necklace", "Earring", "Bracelet", "Ring"];
-const PRICE_RANGES = [
-  { label: "Under $500", min: 0, max: 500 },
-  { label: "$500 - $1000", min: 500, max: 1000 },
-  { label: "$1000 - $2000", min: 1000, max: 2000 },
-  { label: "Over $2000", min: 2000, max: Infinity }
-];
+
 
 interface ProductFiltersProps {
     currentCategory?: string;
@@ -29,9 +21,7 @@ function ProductFilters({ currentCategory }: ProductFiltersProps) {
   
   
     const [selectedCategory, setSelectedCategory] = useState(currentCategory || "All Products");
-    const [selectedPriceRange] = useState<{ min: number; max: number } | null>(null);
-    const [minPrice, setMinPrice] = useState("");
-    const [maxPrice, setMaxPrice] = useState("");
+   
 
     const handlecategoryClick = (category:string) =>{
       setSelectedCategory(category);
