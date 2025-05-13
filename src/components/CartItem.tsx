@@ -33,9 +33,7 @@ const Cart = () => {
   
     const cart = useCartStore((state) => state.cart);
     const removeItem = useCartStore((state) => state.removeFromCart);
-    const increase = useCartStore((state) => state.increaseQuantity);
-    const decrease = useCartStore((state) => state.decreaseQuantity);
-  
+   
     const total = cart.reduce((acc, item) => acc + item.productPrice * item.quantity!, 0);
   
 
