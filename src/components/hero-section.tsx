@@ -19,7 +19,7 @@ const HeroSection = () => {
     //   </div>
     // </div>
     <div className="relative">
-  <img src={hero} className="w-full h-[70vh] md:h-[80vh] object-cover" />
+  <img src={hero} className="w-full  md:h-[80vh] sm:h-[80vh] md:object-contain object-cover" />
 
   {/* Black overlay */}
   <div className="absolute inset-0 bg-black/20"></div>
