@@ -5,40 +5,50 @@ import { CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 
 import { Trash } from "lucide-react";
-import { Product } from "../types";
+//import { Product } from "../types";
 import { Separator } from "../components/ui/separator";
-import { CartItem } from "../pages/DetailPage";
+//import { CartItem } from "../pages/DetailPage";
+import { useCartStore } from "../stores/useCartStore";
 
 
 
-type Props = {
-  product: Product;
-  cartItems: CartItem[];
-  removeFromCart: (cartItem: CartItem) => void;
-};
+// type Props = {
+//   product: Product;
+//   cartItems: CartItem[];
+//   removeFromCart: (cartItem: CartItem) => void;
+// };
 
-const Cart = ({ product, cartItems, removeFromCart }: Props) => {
-  const getTotalCost = () => {
-    const totalInPence = cartItems.reduce(
-      (total, cartItem) => total + cartItem.price * cartItem.quantity,
-      0
-    );
+const Cart = () => {
+  // const getTotalCost = () => {
+  //   const totalInPence = cartItems.reduce(
+  //     (total, cartItem) => total + cartItem.price * cartItem.quantity,
+  //     0
+  //   );
 
-    const totalWithDelivery = totalInPence + product.productPrice;
+  //   const totalWithDelivery = totalInPence + product.productPrice;
 
-    return (totalWithDelivery ).toFixed(2);
-  };
+  //   return (totalWithDelivery ).toFixed(2);
+  // };
+
+  
+    const cart = useCartStore((state) => state.cart);
+    const removeItem = useCartStore((state) => state.removeFromCart);
+    const increase = useCartStore((state) => state.increaseQuantity);
+    const decrease = useCartStore((state) => state.decreaseQuantity);
+  
+    const total = cart.reduce((acc, item) => acc + item.productPrice * item.quantity!, 0);
+  
 
   return (
     <>
       <CardHeader>
         <CardTitle className="text-2xl font-bold tracking-tight flex justify-between">
           <span>Your Order</span>
-          <span>Rs {getTotalCost()}</span>
+          <span>Rs {total}</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
-        {cartItems.map((item) => (
+        {cart.map((item) => (
           <div className="flex justify-between">
             <span>
               <Badge variant="outline" className="mr-2">
@@ -51,9 +61,9 @@ const Cart = ({ product, cartItems, removeFromCart }: Props) => {
                 className="cursor-pointer"
                 color="red"
                 size={20}
-                onClick={() => removeFromCart(item)}
+                onClick={() => removeItem(item._id)}
               />
-              Rs {((item.price * item.quantity) ).toFixed(2)}
+              Rs {((item.productPrice * item.quantity!) ).toFixed(2)}
             </span>
           </div>
         ))}

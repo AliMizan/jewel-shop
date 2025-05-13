@@ -4,14 +4,16 @@ import { ShoppingCart } from "lucide-react";
 import { Separator } from "../components/ui/separator";
 
 import { Button } from "../components/ui/button";
-import { useState } from "react";
+
 
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../components/ui/sheet";
-import { Card } from "../components/ui/card";
+import { Card, CardFooter } from "../components/ui/card";
 import CartItem from "../components/CartItem";
-import { useAuth0 } from "@auth0/auth0-react";
+//import { useAuth0 } from "@auth0/auth0-react";
 
 import { useCartStore } from '../stores/useCartStore';
+import CheckoutButton from "../components/CheckOutButton";
+import { UserFormData } from "../components/forms/user-profile-form/UserProfileForm";
 
 export type CartItem = {
   _id: string;
@@ -24,14 +26,18 @@ export type CartItem = {
 function DetailPage() {
 
 const AddToCart = useCartStore((state) => state.addToCart);
-    const { user } = useAuth0();
+    //const { user } = useAuth0();
     const { productId } = useParams()
     const { product, error } = useGetProduct(productId);
 
-    const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    const storedCartItems = sessionStorage.getItem(`cartItems-${user?.name}`);
-    return storedCartItems ? JSON.parse(storedCartItems) : [];
-  });
+    const onCheckout = (userFormData : UserFormData) =>{
+        console.log("userData",userFormData)
+    }
+
+//     const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+//     const storedCartItems = sessionStorage.getItem(`cartItems-${user?.name}`);
+//     return storedCartItems ? JSON.parse(storedCartItems) : [];
+//   });
 
   // const addToCart = (Product:Product) => {
   //   setCartItems((prevCartItems) => {
@@ -69,20 +75,20 @@ const AddToCart = useCartStore((state) => state.addToCart);
   //   });
   // };
 
-  const removeFromCart = (cartItem: CartItem) => {
-    setCartItems((prevCartItems) => {
-      const updatedCartItems = prevCartItems.filter(
-        (item) => cartItem._id !== item._id
-      );
+//   const removeFromCart = (cartItem: CartItem) => {
+//     setCartItems((prevCartItems) => {
+//       const updatedCartItems = prevCartItems.filter(
+//         (item) => cartItem._id !== item._id
+//       );
 
-      sessionStorage.setItem(
-        `cartItems-${user?.name}`,
-        JSON.stringify(updatedCartItems)
-      );
+//       sessionStorage.setItem(
+//         `cartItems-${user?.name}`,
+//         JSON.stringify(updatedCartItems)
+//       );
 
-      return updatedCartItems;
-    });
-  };
+//       return updatedCartItems;
+//     });
+//   };
 
 
   if(error){
@@ -141,8 +147,12 @@ const AddToCart = useCartStore((state) => state.addToCart);
         <Separator className="bg-slate-900" />
 
         <Card>
-            <CartItem product={product!} cartItems={cartItems} removeFromCart={removeFromCart} />
+            <CartItem/>
+            <CardFooter>
+                <CheckoutButton onCheckout={onCheckout}/>
+            </CardFooter>
         </Card>
+
         
       </SheetContent>
     </Sheet>

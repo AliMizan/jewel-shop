@@ -2,6 +2,8 @@
 import { Minus, Plus, Trash } from "lucide-react";
 
 import { useCartStore } from "../stores/useCartStore";
+import CheckoutButton from "../components/CheckOutButton";
+import { UserFormData } from "../components/forms/user-profile-form/UserProfileForm";
 
 
 // type CartItem = {
@@ -14,6 +16,10 @@ import { useCartStore } from "../stores/useCartStore";
 
 
 export default function Cart() {
+
+  const onCheckout = (userFormData : UserFormData) =>{
+            console.log("userData",userFormData)
+        }
 
   const cart = useCartStore((state) => state.cart);
   const removeItem = useCartStore((state) => state.removeFromCart);
@@ -183,7 +189,7 @@ export default function Cart() {
 
             <div className="flex items-center justify-between sm:flex-col gap-4 sm:gap-2">
               <p className="text-lg font-semibold">
-                Rs {(item.productPrice * item.quantity!).toFixed(2)}
+                Rs {(item.productPrice * item.quantity!).toFixed(2)}/-
               </p>
               <button
                 onClick={() => removeItem(item._id)}
@@ -198,10 +204,11 @@ export default function Cart() {
       </div>
 
       <div className="mt-10 text-right">
-        <h2 className="text-2xl font-bold">Total: ${total.toFixed(2)}</h2>
-        <button className="mt-4 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition">
+        <h2 className="text-2xl font-bold">Total: Rs {total.toFixed(2)}/-</h2>
+        {/* <button className="mt-4 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition">
           Proceed to Checkout
-        </button>
+        </button> */}
+        <CheckoutButton onCheckout={onCheckout}  />
       </div>
     </div>
   );
