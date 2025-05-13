@@ -135,7 +135,7 @@ const UserProfileForm = ({
         {isLoading ? (
           <LoadingButton />
         ) : (
-          <Button type="submit" className="bg-[#E3AD26] hover:bg-amber-100">
+          <Button type="submit" className="bg-[#C6C6C6] hover:bg-amber-100">
             {buttonText}
           </Button>
         )}

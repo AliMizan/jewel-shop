@@ -1,8 +1,5 @@
 
-
-import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
-import hero from "../assets/hero.png";
+import hero from "../../public/Hero2.jpg"
 
 
 const HeroSection = () => {
@@ -32,11 +29,7 @@ const HeroSection = () => {
         <div className="text-center px-4">
           <h1 className="text-4xl md:text-6xl font-playfair font-bold text-white mb-4">Timeless Elegance</h1>
           <p className="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto">Discover our exclusive collection of handcrafted jewelry pieces</p>
-          <Link to="/products">
-            <Button size="lg" className="bg-[#D8A632] text-white hover:bg-primary/80">
-              Explore Collection
-            </Button>
-          </Link>
+          
         </div>
       </div>
 </div>

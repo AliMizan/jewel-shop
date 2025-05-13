@@ -16,14 +16,14 @@ const Header = () => {
      <div className="flex justify-between items-center py-4">
         <Link
           to="/"
-          className="font-playfair text-[#E3AD26] text-2xl md:text-3xl font-bold "
+          className="font-playfair text-[#C6C6C6] text-2xl md:text-3xl font-bold "
         >
         <img src={logo} height={90} width={90} className="object-cover" />
         </Link>
         <div className="md:hidden flex gap-3">
           <Link 
               to="/cart" 
-              className="hover:text-[#E3AD26] transition-colors"
+              className="hover:text-[#C6C6C6] transition-colors"
             >
               <div className="relative">
                 <ShoppingCart  />

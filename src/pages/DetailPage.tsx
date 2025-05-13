@@ -121,7 +121,7 @@ const AddToCart = useCartStore((state) => state.addToCart);
               </div> */}
                         <span className="text-sm text-gray-500">({product?.reviews} reviews)</span>
                     </div>
-                    <div className="text-2xl font-medium text-[#E3AD26] mb-6">
+                    <div className="text-2xl font-medium text-[#C6C6C6] mb-6">
                         Rs {product?.productPrice}/-
                     </div>
 
@@ -131,12 +131,12 @@ const AddToCart = useCartStore((state) => state.addToCart);
 
                     <div className="flex items-center space-x-4 mb-6">
                         
-                        <Button onClick={() => AddToCart({...product!,quantity:1})} className="flex-1 h-[42px] text-white hover:bg-amber-300 bg-[#E3AD26]">
+                        <Button onClick={() => AddToCart({...product!,quantity:1})} className="flex-1 h-[42px] text-white hover:bg-gray-500 bg-[#C6C6C6]">
                             Add to Cart
                         </Button>
                         <Sheet>
       <SheetTrigger>
-        <Button className="flex-1 h-[42px] text-white hover:bg-black bg-gray-400">
+        <Button className="flex-1 h-[42px] text-white bg-black hover:bg-gray-500">
                             Check Cart
         </Button>
       </SheetTrigger>
@@ -175,7 +175,7 @@ const AddToCart = useCartStore((state) => state.addToCart);
                             <span className="w-24 text-gray-500">Category:</span>
                             <Link
                                 to={`/product/${product?.category}`}
-                                className="text-[#E3AD26] hover:underline"
+                                className="text-[#C6C6C6] hover:underline"
                             >
                                 {product?.category}
                             </Link>

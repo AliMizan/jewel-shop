@@ -51,7 +51,7 @@ function ProductFilters({ currentCategory }: ProductFiltersProps) {
             <li key={category}>
               <Link to={`/products/${category}`}>
               <button
-                className={`w-full text-left py-1 hover:text-[#E3AD26] transition-colors ${
+                className={`w-full text-left py-1 hover:text-[#C6C6C6] transition-colors ${
                   selectedCategory === category ? "text-primary font-medium" : ""
                 }`}
                 onClick={() => handlecategoryClick(category)}
@@ -65,9 +65,9 @@ function ProductFilters({ currentCategory }: ProductFiltersProps) {
         </ul>
       </div>
 
-      <Separator />
+      <Separator className="my-12 bg-[#E7E5E4]" />
 
-      <div>
+      {/* <div>
         <h3 className="text-lg font-medium mb-3">Price</h3>
         <ul className="space-y-2 mb-4">
           {PRICE_RANGES.map((range) => (
@@ -91,7 +91,7 @@ function ProductFilters({ currentCategory }: ProductFiltersProps) {
             <div>
               <Label htmlFor="min-price">Min</Label>
               <Input
-              className={cn("border-0",onclick && "border-[#E3AD26]")}
+              className={cn("border-0",onclick && "border-[#C6C6C6]")}
                 id="min-price"
                 type="number"
                 placeholder="0"
@@ -104,7 +104,7 @@ function ProductFilters({ currentCategory }: ProductFiltersProps) {
             <div>
               <Label htmlFor="max-price">Max</Label>
               <Input 
-              className="border-0 focus:border-[#E3AD26] "
+              className="border-0 focus:border-[#C6C6C6] "
                 id="max-price"
                 type="number"
                 placeholder="∞"
@@ -116,14 +116,14 @@ function ProductFilters({ currentCategory }: ProductFiltersProps) {
           </div>
           <Button
             size="sm" 
-            className="w-full bg-[#E3AD26]"
+            className="w-full bg-[#C6C6C6]"
 
             // onClick={handleCustomPriceFilter}
           >
             Apply
           </Button>
         </div>
-      </div>
+      </div> */}
 
     </div>
   )

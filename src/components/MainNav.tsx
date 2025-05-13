@@ -46,7 +46,7 @@ const MainNav = () => {
             <Link 
               to="/" 
               className={cn(
-                " hover:text-[#E3AD26] transition-colors hover:underline decoration-2 decoration-[#E3AD26] "
+                " hover:text-[#C6C6C6] transition-colors hover:underline decoration-2 decoration-[#C6C6C6] "
               )}
             >
               Home
@@ -54,7 +54,7 @@ const MainNav = () => {
             <div className="relative group">
               <DropdownMenu >
                 <DropdownMenuTrigger asChild>
-                  <div className="hover:text-[#E3AD26] flex items-center cursor-pointer">
+                  <div className="hover:text-[#C6C6C6] flex items-center cursor-pointer">
                     Collections
                   </div>
                 </DropdownMenuTrigger>
@@ -86,26 +86,26 @@ const MainNav = () => {
             <Link 
               to="/products" 
               className={cn(
-                "hover:text-[#E3AD26] transition-colors"
+                "hover:text-[#C6C6C6] transition-colors"
               )}
             >
               All Products
             </Link>
             <Link 
               to="#" 
-              className="hover:text-[#E3AD26] transition-colors"
+              className="hover:text-[#C6C6C6] transition-colors"
             >
               About Us
             </Link>
             <Link 
               to="#" 
-              className="hover:text-[#E3AD26] transition-colors"
+              className="hover:text-[#C6C6C6] transition-colors"
             >
               Contact
             </Link>
             <Link 
               to="/cart" 
-              className="hover:text-[#E3AD26] transition-colors"
+              className="hover:text-[#C6C6C6] transition-colors"
             >
               <div className="relative">
                 <ShoppingCart  />
@@ -130,7 +130,7 @@ const MainNav = () => {
       ) : (
         <Button
           variant="ghost"
-          className="font-bold hover:text-[#E3AD26] hover:bg-white"
+          className="font-bold hover:text-[#C6C6C6] hover:bg-white"
           onClick={async () => await loginWithRedirect()}
         >
           Log In
