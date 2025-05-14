@@ -1,19 +1,19 @@
 import { Link, useParams } from "react-router-dom"
 import { useGetProduct } from "../api/ProductApi"
-import { ShoppingCart } from "lucide-react";
+
 import { Separator } from "../components/ui/separator";
 
 import { Button } from "../components/ui/button";
 
 
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../components/ui/sheet";
-import { Card, CardFooter } from "../components/ui/card";
-import CartItem from "../components/CartItem";
+
+//import CartItem from "../components/CartItem";
 //import { useAuth0 } from "@auth0/auth0-react";
 
 import { useCartStore } from '../stores/useCartStore';
-import CheckoutButton from "../components/CheckOutButton";
-import { UserFormData } from "../components/forms/user-profile-form/UserProfileForm";
+
+import { toast } from "sonner";
+import CartSheet from "../components/CartSheet";
 
 export type CartItem = {
   _id: string;
@@ -30,9 +30,16 @@ const AddToCart = useCartStore((state) => state.addToCart);
     const { productId } = useParams()
     const { product, error } = useGetProduct(productId);
 
-    const onCheckout = (userFormData : UserFormData) =>{
-        console.log("userData",userFormData)
-    }
+    // const onCheckout = (userFormData : UserFormData) =>{
+    //     console.log("userData",userFormData)
+    // }
+
+    const handleAddToCart = () => {
+    AddToCart({...product!,quantity:1})
+    toast.success(`${product?.name} added to cart`, {
+      description: `Price: ₹${product?.productPrice}`,
+    });
+  };
 
 //     const [cartItems, setCartItems] = useState<CartItem[]>(() => {
 //     const storedCartItems = sessionStorage.getItem(`cartItems-${user?.name}`);
@@ -131,31 +138,10 @@ const AddToCart = useCartStore((state) => state.addToCart);
 
                     <div className="flex items-center space-x-4 mb-6">
                         
-                        <Button onClick={() => AddToCart({...product!,quantity:1})} className="flex-1 h-[42px] text-white hover:bg-gray-500 bg-[#C6C6C6]">
+                        <Button onClick={handleAddToCart} className="flex-1 h-[42px] text-white hover:bg-gray-500 bg-[#C6C6C6]">
                             Add to Cart
                         </Button>
-                        <Sheet>
-      <SheetTrigger>
-        <Button className="flex-1 h-[42px] text-white bg-black hover:bg-gray-500">
-                            Check Cart
-        </Button>
-      </SheetTrigger>
-      <SheetContent className="p-8 bg-amber-50 space-y-3">
-        <SheetTitle className="flex gap-x-1">
-          <ShoppingCart/>  Cart
-        </SheetTitle>
-        <Separator className="bg-slate-900" />
-
-        <Card>
-            <CartItem/>
-            <CardFooter>
-                <CheckoutButton onCheckout={onCheckout}/>
-            </CardFooter>
-        </Card>
-
-        
-      </SheetContent>
-    </Sheet>
+                        <CartSheet/>
                     </div>
 
                     <div className="bg-gray-50 p-4 rounded-lg">
