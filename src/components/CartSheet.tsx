@@ -25,21 +25,20 @@ function CartSheet() {
                         Check Cart
                     </Button>
                 </SheetTrigger>
-                <SheetContent className=" bg-gray-100 flex flex-col justify-between  w-[400px] sm:w-2xl border-0  ">
+                <SheetContent className=" bg-gray-100 flex flex-col justify-between  w-xs sm:w-xl md:w-2xl border-0  ">
                     <div className="p-8 space-y-3">
-                        <div className="w-full text-4xl font-bold font-mono py-3" >Your Cart</div>
+                        <div className="w-full text-2xl  md:text-4xl font-bold font-mono py-3" >Your Cart</div>
                         <Separator className="bg-gray-300 h-1"/>
                         {cart.map((item) => (
                             <div className="flex gap-6 w-full "  >
                                 <div>
-                                    <img src={item.imageUrl} className="h-30 w-40" />
-
+                                    <img src={item.imageUrl} className=" h-20 md:h-30 w-40" />
                                 </div>
                                 <div className="flex flex-col w-full justify-between ">
                                     <div className="flex justify-between items-center"  >
                                         <div className=" flex flex-col" >
-                                            <div className="md:text-2xl font-semibold"> {item.name}</div>
-                                            <div className="md:text-3xs text-gray-500   "> {item.productPrice}/- each</div>
+                                            <div className="md:text-2xl text-2xs font-semibold"> {item.name}</div>
+                                            <div className="md:text-3xs text-xs text-gray-500   "> {item.productPrice}/- each</div>
                                         </div>
                                         <button
                                             onClick={() => removeItem(item._id)}
@@ -48,43 +47,34 @@ function CartSheet() {
                                         >
                                             <Trash2 />
                                         </button>
-
                                     </div>
-                                    <div className="flex justify-between items-center"  >
+                                    <div className="flex justify-between items-center gap-0.5"  >
                                         <div className="md:text-xl  ">  Rs {(item.productPrice * item.quantity!).toFixed(2)}/-</div>
-                                        <div className="flex items-center gap-3 mt-4 border-gray-300 border-2 rounded-xl">
+                                        <div className="flex items-center gap-0.5 sm:gap-3 mt-4 border-gray-300 border-2 rounded-xl">
                                             <Button
                                                 onClick={() => decrease(item._id)}
-                                                className="p-2  hover:bg-gray-300 rounded-b-md"
+                                                className="p-2 w-1 sm:w-4 hover:bg-gray-300 rounded-b-md"
                                             >
                                                 <Minus size={16} />
                                             </Button>
-                                            <span className="text-lg font-medium">{item.quantity}</span>
+                                            <span className="text-sm font-medium">{item.quantity}</span>
                                             <Button
                                                 onClick={() => increase(item._id)}
-                                                className="p-2  hover:bg-gray-300 "
+                                                className="p-2 w-1 sm:w-4 hover:bg-gray-300 rounded-b-md"
                                             >
                                                 <Plus size={16} />
                                             </Button>
                                         </div>
-
-
                                     </div>
-
-
                                 </div>
-
                             </div>
                         ))}
-
                     </div>
-
-
                     <div className=" w-full flex flex-col p-8 bg-white h-60 shadow-2xl shadow-black gap-y-6" >
                         <div className="flex justify-between " >
-                            <div className=" flex text-xl gap-x-3  " >
-                                <div className="font-semibold" >Subtotal</div>
-                                <div className="text-gray-500" >
+                            <div className=" flex  gap-x-3  items-center  " >
+                                <div className="font-semibold text-2xs sm:text-xl" >Subtotal</div>
+                                <div className="text-gray-500 text-xs sm:text-lg" >
                                     ({cart.length})items
                                 </div>
 
@@ -93,17 +83,13 @@ function CartSheet() {
                                 Rs {total}/-
                             </div>
                         </div>
-
-                        <Button className="bg-black hover:bg-gray-600 h-20 rounded-2xl text-white text-2xl ">
+                        <Button className="bg-black hover:bg-gray-600 h-20 rounded-2xl text-white  text-4xs sm:text-2xl ">
                             Continue to Checkout
                         </Button>
                         <div className="flex items-center justify-center font-semibold ">
                             Hurry up before it sells out
                         </div>
                     </div>
-
-
-
                 </SheetContent>
             </Sheet>
         </div>
